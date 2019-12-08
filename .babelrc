@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "@babel/preset-typescript",
+    "@babel/preset-env", // ES2015+ 自动转换为 ES5，类似以前的 lastest，详见https://www.babeljs.cn/docs/babel-preset-env
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread"
+  ]
+}

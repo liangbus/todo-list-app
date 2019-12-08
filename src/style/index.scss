@@ -1,0 +1,115 @@
+.todo-list-component{
+  width: 800px;
+  padding: 15px 0px;
+  margin: 0 auto;
+  border: 1px solid #fdfdd3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(255, 249, 239);
+}
+.header-field{
+  padding: 0 30px;
+  .title-field{
+    font-size: 32px;
+    text-align: center;
+    // font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+}
+
+.todo-input-field {
+  margin: 20px 0;
+  font-size: 16px;
+  input{
+    font-size: 16px;
+    width: 100%;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: inset 1px 1px 1px rgba($color: #666, $alpha: .1);
+    outline: none;
+  }
+}
+.todo-list-content-field{
+  margin: 20px 0;
+  font-size: 16px;
+  color: #4b4b4b;
+  padding: 0 30px;
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  .todo-list-item{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    line-height: 28px;
+    padding: 10px 10px;
+    border-bottom: 1px solid rgb(240, 239, 233);
+  }
+  .item-checkbox{
+    margin-right: 15px;
+  }
+  .todo-list-item:last-child{
+    border-bottom: none;
+  }
+}
+.operate-field {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px 20px 30px;
+  border-bottom: 1px solid rgb(240, 239, 233);
+  .left-operatei-field{
+    display: flex;
+    align-items: center;
+  }
+  .list-info-field{
+    font-size: 14px;
+    color: #666;
+    margin-left: 20px;
+  }
+  .add-search-field{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    border-right: 1px solid #dedede;
+  }
+  .show-add-btn {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    opacity: .5;
+    background-image: url(../assets/icons/plus.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .show-search-btn {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    opacity: .5;
+    background-image: url(../assets/icons/search.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .show-add-btn.actived,
+  .show-search-btn.actived{
+    opacity: 1;
+  }
+  .list-filter-field{
+    padding: 0 20px;
+    .filter-item{
+      display: inline-block;
+      padding: 5px 15px;
+      text-decoration: none;
+      color: #666;
+    }
+    .actived{
+      border: 1px solid #dfdfdf;
+      border-radius: 5px;
+      background-color: #fefefe;
+    }
+  }
+}
