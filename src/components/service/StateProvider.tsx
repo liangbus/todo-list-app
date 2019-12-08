@@ -50,8 +50,13 @@ export default class StateProvider extends Component<Props, State> {
         },
         {
           id: 4,
-          state: 0,
+          state: 1,
           content: '做一个 React 小项目'
+        },
+        {
+          id: 5,
+          state: 0,
+          content: '约上大家吃晚饭，时间要今晚定下来'
         }
       ],
       searchingResult: [],
@@ -158,7 +163,7 @@ export default class StateProvider extends Component<Props, State> {
   }
   // 搜索框内容输入处理
   searchInputChangeHandler = debounce((content: string) => {
-    console.log('searching content >>> ', content)
+    // console.log('searching content >>> ', content)
     const { curFilter } = this.state
     const searchResult = this.getMatchedTodoItems(content, curFilter);
     this.setState({

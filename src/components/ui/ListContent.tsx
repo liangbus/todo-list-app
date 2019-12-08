@@ -16,6 +16,10 @@ export default class ListContent extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
   }
+  shouldComponentUpdate(nextProps: Props, nextStates: State) {
+    console.log('ListContent shouldComponentUpdate nextProps: ', nextProps)
+    return true
+  }
   checkboxChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const dataset = e.target.dataset
     const { upateTodoListStatus } = this.props

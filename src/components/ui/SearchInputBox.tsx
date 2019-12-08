@@ -12,6 +12,10 @@ export default class SearchInputBox extends Component<Props, State> {
   state = {
     searchContent: this.props.queryContent
   }
+  shouldComponentUpdate(nextProps: Props, nextStates: State) {
+    console.log('SearchInputBox shouldComponentUpdate nextProps: ', nextProps)
+    return true
+  }
   onInputValueChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { searchInputChangeHandler } = this.props
     const searchContent = e.target.value

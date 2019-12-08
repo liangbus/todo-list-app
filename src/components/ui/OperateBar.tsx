@@ -17,6 +17,10 @@ export default class OperateBar extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
   }
+  shouldComponentUpdate(nextProps: Props, nextStates: State) {
+    console.log('OperateBar shouldComponentUpdate nextProps: ', nextProps)
+    return true
+  }
   render() {
     const { switchMode, todoContentFilter, mode, curFilter, uncompletedCount } = this.props
     // console.log('switchMode >> ', switchMode);

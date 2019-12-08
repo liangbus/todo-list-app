@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Header } from './Header'
 import Body from './Body'
+import Footer from './Footer'
 interface Props {
   actions?: any
   data?: any
@@ -20,6 +21,7 @@ export class TodoList extends Component<Props, State> {
       <div className="todo-list-component">
         <Header { ...{ switchMode, createTodoItem, mode, searchInputChangeHandler, queryContent, createContent } }></Header>
         <Body {...{ switchMode, todoContentFilter, mode, uncompletedCount, curFilter, filteredListContent, upateTodoListStatus }}/>
+        <Footer />
       </div>
     )
   }

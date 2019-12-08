@@ -16,9 +16,12 @@ interface State {
 export default class InputField extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    console.log('InputField constructor props >>> ', props)
+    // console.log('InputField constructor props >>> ', props)
   }
-
+  shouldComponentUpdate(nextProps: Props, nextStates: State) {
+    console.log('InputField shouldComponentUpdate nextProps: ', nextProps)
+    return true
+  }
   render() {
     const { mode } = this.props
     // console.log('in InputField render >>> ', mode)
