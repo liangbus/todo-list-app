@@ -5,7 +5,9 @@ import { SEARCH_MODE, CREATE_MODE } from '../../utils/common'
 interface Props {
   createTodoItem: Function,
   searchInputChangeHandler: Function,
-  mode: string
+  queryContent: string,
+  createContent: string,
+  mode: string,
 }
 interface State {
   

@@ -4,6 +4,8 @@ interface Props {
   switchMode: Function,
   createTodoItem: Function,
   searchInputChangeHandler: Function,
+  queryContent: string,
+  createContent: string,
   mode: string
 }
 interface State {
@@ -12,7 +14,7 @@ interface State {
 export class Header extends Component<Props, State> {
   render() {
     const { mode } = this.props
-    console.log('in Header render >> ', mode)
+    // console.log('in Header render >> ', mode)
     return (
       <div className="header-field">
         <div className="title-field">

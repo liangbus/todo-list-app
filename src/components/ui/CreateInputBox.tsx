@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 interface Props {
   createTodoItem: Function,
+  createContent: string
 }
 interface State {
   value: string
@@ -11,7 +12,7 @@ export default class CreateInputBox extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      value: ''
+      value: this.props.createContent
     }
   }
   onKeyupHandler(e: any) {
@@ -37,7 +38,7 @@ export default class CreateInputBox extends Component<Props, State> {
         autoFocus
         type="text"
         value={value}
-        placeholder="The next todo things is? Press [ENTER] to add one."
+        placeholder="Press [ENTER] to add new one."
         onKeyUp={this.onKeyupHandler.bind(this)}
         onChange={this.onInputValueChange.bind(this)}
       />

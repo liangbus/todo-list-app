@@ -1,7 +1,8 @@
 import React, { Component, ChangeEvent } from 'react'
 
 interface Props {
-  searchInputChangeHandler: Function
+  searchInputChangeHandler: Function,
+  queryContent: string
 }
 interface State {
   searchContent: string
@@ -9,7 +10,7 @@ interface State {
 
 export default class SearchInputBox extends Component<Props, State> {
   state = {
-    searchContent: ''
+    searchContent: this.props.queryContent
   }
   onInputValueChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { searchInputChangeHandler } = this.props
@@ -25,7 +26,7 @@ export default class SearchInputBox extends Component<Props, State> {
         autoFocus
         type="text"
         value={this.state.searchContent}
-        placeholder="Search your todo list."
+        placeholder="Search your todo item."
         onChange={ this.onInputValueChange.bind(this) }
       />
     )

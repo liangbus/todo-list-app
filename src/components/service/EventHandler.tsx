@@ -10,9 +10,6 @@ interface State {
 
 export default class EventHandler extends Component{
   state = {}
-  componentWillMount(){
-    // window.addEventListener('keydown', this.keydownHandler.bind(this));
-  }
   componentWillUnmount() {
     window.removeEventListener('keydown', this.keydownHandler);
   }
