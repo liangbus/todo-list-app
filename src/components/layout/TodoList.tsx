@@ -14,12 +14,12 @@ export class TodoList extends Component<Props, State> {
   render() {
     const { actions = {}, data = {} } = this.props
     const { switchMode, todoContentFilter, createTodoItem, searchInputChangeHandler, upateTodoListStatus } = actions;
-    const { mode, filteredListContent, curFilter } = data
+    const { mode, filteredListContent, curFilter, uncompletedCount } = data
     console.log('in Todo List ChangeMode', switchMode)
     return (
       <div className="todo-list-component">
         <Header { ...{ switchMode, createTodoItem, mode, searchInputChangeHandler } }></Header>
-        <Body {...{ switchMode, todoContentFilter, mode, curFilter, filteredListContent, upateTodoListStatus }}/>
+        <Body {...{ switchMode, todoContentFilter, mode, uncompletedCount, curFilter, filteredListContent, upateTodoListStatus }}/>
       </div>
     )
   }

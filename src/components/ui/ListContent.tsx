@@ -28,14 +28,17 @@ export default class ListContent extends Component<Props, State> {
       return (
         // 遍历需要增加 key
         <li className={'todo-list-item ' + (todoItem.state === 1 ? 'finished' : '')} key={todoItem.id}>
-          <input
-            type="checkbox"
-            className="item-checkbox"
-            checked={todoItem.state === 1 ? true : false}
-            data-id={todoItem.id}
-            onChange={this.checkboxChangeHandler.bind(this)}
-          />
-          <span>{todoItem.content}</span>
+          <label htmlFor={`checkbox-${todoItem.id}`}>
+            <input
+              id={`checkbox-${todoItem.id}`}
+              type="checkbox"
+              className="item-checkbox"
+              checked={todoItem.state === 1 ? true : false}
+              data-id={todoItem.id}
+              onChange={this.checkboxChangeHandler.bind(this)}
+            />
+            <span>{todoItem.content}</span>
+          </label>
         </li>
       )
     })

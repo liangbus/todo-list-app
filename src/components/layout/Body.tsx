@@ -6,6 +6,7 @@ interface Props {
   switchMode: Function,
   todoContentFilter: Function,
   upateTodoListStatus: Function,
+  uncompletedCount: number,
   mode: string,
   curFilter: string,
   filteredListContent: []

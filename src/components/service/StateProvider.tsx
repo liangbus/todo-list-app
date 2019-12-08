@@ -10,6 +10,7 @@ interface State {
   mode: string,
   curFilter: string,
   queryContent: string,
+  uncompletedCount: number,
   todoListFullContent: Array<ListItem>,
   filteredListContent: Array<ListItem>
 }
@@ -27,6 +28,7 @@ export default class StateProvider extends Component<Props, State> {
       mode: CREATE_MODE,
       curFilter: ALL_TODO_FILTER,
       queryContent: '',
+      uncompletedCount: 0,
       todoListFullContent: [
         {
           id: 1,
@@ -54,8 +56,10 @@ export default class StateProvider extends Component<Props, State> {
   }
   componentWillMount() {
     this.updateFilterList(ALL_TODO_FILTER)
+    this.updateUncompletedCount();
   }
   componentDidUpdate(){}
+  // 更新过滤器
   updateFilterList(type: string) {
     const { todoListFullContent } = this.state
     const filterList = todoListFullContent.filter((item: ListItem) => {
@@ -74,7 +78,16 @@ export default class StateProvider extends Component<Props, State> {
       filteredListContent: filterList
     })
   }
-
+  // 未完成项目个数
+  updateUncompletedCount() {
+    const { todoListFullContent } = this.state
+    const count = todoListFullContent.reduce((acc: number, next: ListItem) => {
+      return acc + (next.state === 0 ? 1 : 0)
+    }, 0)
+    this.setState({
+      uncompletedCount: count
+    })
+  }
   render() {
     const children = setChildrenProps(this.props.children, {
       data: this.state,
@@ -118,6 +131,7 @@ export default class StateProvider extends Component<Props, State> {
       todoListFullContent
     }, () => {
       this.updateFilterList(this.state.curFilter)
+      this.updateUncompletedCount();
     })
   }
   searchInputChangeHandler = debounce((content: string) => {
@@ -148,6 +162,8 @@ export default class StateProvider extends Component<Props, State> {
     console.log('updated list >> ', updatedList);
     this.setState({
       todoListFullContent: updatedList
+    }, () => {
+      this.updateUncompletedCount();
     })
   }
 }

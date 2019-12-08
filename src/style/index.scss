@@ -39,12 +39,14 @@
     padding: 0;
   }
   .todo-list-item{
-    display: flex;
-    align-items: center;
     list-style: none;
     line-height: 28px;
     padding: 10px 10px;
     border-bottom: 1px solid rgb(240, 239, 233);
+  }
+  .todo-list-item label{
+    display: flex;
+    align-items: center;
   }
   .item-checkbox{
     margin-right: 15px;

@@ -4,6 +4,7 @@ import { SEARCH_MODE, CREATE_MODE, ALL_TODO_FILTER, NEED_TODO_FILTER, COMPLETED_
 interface Props {
   switchMode: Function,
   todoContentFilter: Function,
+  uncompletedCount: number,
   mode: string,
   curFilter: string,
   filteredListContent: []
@@ -16,8 +17,9 @@ export default class OperateBar extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
   }
+  componentWillUpdate() {}
   render() {
-    const { switchMode, todoContentFilter, mode, curFilter } = this.props
+    const { switchMode, todoContentFilter, mode, curFilter, uncompletedCount } = this.props
     // console.log('switchMode >> ', switchMode);
     return (
       <div className="operate-field">
@@ -31,7 +33,10 @@ export default class OperateBar extends Component<Props, State> {
               this.props.filteredListContent.length < 1 ? 
               <span>Write down a first TODO note~</span>
               :
-              <span>{this.props.filteredListContent.length} things left TODO</span>
+              uncompletedCount > 0 ?
+              <span>{uncompletedCount} things left TODO</span>
+              :
+              <span>Wow~ you have completed all!!!</span>
             }
           </div>
         </div>
