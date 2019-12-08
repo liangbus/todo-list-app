@@ -5,6 +5,7 @@ import OperateBar from '../ui/OperateBar'
 interface Props {
   switchMode: Function,
   todoContentFilter: Function,
+  upateTodoListStatus: Function,
   mode: string,
   curFilter: string,
   filteredListContent: []

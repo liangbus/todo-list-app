@@ -52,6 +52,9 @@
   .todo-list-item:last-child{
     border-bottom: none;
   }
+  .todo-list-item.finished{
+    text-decoration: line-through;
+  }
 }
 .operate-field {
   display: flex;

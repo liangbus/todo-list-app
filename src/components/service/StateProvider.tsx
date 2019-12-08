@@ -15,6 +15,7 @@ interface State {
 }
 
 interface ListItem {
+  id: number,
   state: number,
   content: string
 }
@@ -28,18 +29,22 @@ export default class StateProvider extends Component<Props, State> {
       queryContent: '',
       todoListFullContent: [
         {
+          id: 1,
           state: 0,
           content: '周三去参加朋友生日会'
         },
         {
+          id: 2,
           state: 0,
           content: '周日参加英语沙龙'
         },
         {
+          id: 3,
           state: 1,
           content: '本周内完成照片冲洗'
         },
         {
+          id: 4,
           state: 0,
           content: '做一个 React 小项目'
         }
@@ -73,7 +78,7 @@ export default class StateProvider extends Component<Props, State> {
   render() {
     const children = setChildrenProps(this.props.children, {
       data: this.state,
-      actions: funcsBindWith(this, ['switchMode', 'todoContentFilter', 'createTodoItem', 'searchInputChangeHandler'])
+      actions: funcsBindWith(this, ['switchMode', 'todoContentFilter', 'createTodoItem', 'searchInputChangeHandler', 'upateTodoListStatus'])
     });
     // console.log(`children >>> `, children);
     return (
@@ -81,6 +86,12 @@ export default class StateProvider extends Component<Props, State> {
         {children}
       </div>
     )
+  }
+  // 生成 id
+  generateId() {
+    const { todoListFullContent } = this.state
+    const lastTodoItem = todoListFullContent.slice(-1).pop()
+    return lastTodoItem && (lastTodoItem.id + 1) || 1
   }
   // 切换输入框类型，新增/搜索
   switchMode(mode: string) {
@@ -99,6 +110,7 @@ export default class StateProvider extends Component<Props, State> {
     const { todoListFullContent } = this.state
     console.log('createTodoItem~~~~ ', content)
     todoListFullContent.push({
+      id: this.generateId(),
       content: content,
       state: 0
     })
@@ -110,6 +122,32 @@ export default class StateProvider extends Component<Props, State> {
   }
   searchInputChangeHandler = debounce((content: string) => {
     console.log('searching content >>> ', content)
-  }, 500, this)
-  
+    const searchResult = this.getMatchedTodoItems(content);
+    this.setState({
+      filteredListContent: searchResult
+    })
+  }, 300, this)
+  // 匹配 todo list 项内容
+  getMatchedTodoItems(sContent: string) {
+    const { filteredListContent } = this.state
+    if (!sContent) return this.state.todoListFullContent
+    const resList: Array<ListItem> = filteredListContent.filter(item => {
+      return item.content.includes(sContent)
+    })
+    return resList
+  }
+  upateTodoListStatus(id: number, isCompleted: boolean) {
+    console.log(`id > ${id}   isChecked > ${isCompleted} `)
+    const { todoListFullContent } = this.state
+    const updatedList = todoListFullContent.map(item => {
+      if(item.id === id) {
+        item.state = isCompleted ? 1 : 0
+      }
+      return item
+    })
+    console.log('updated list >> ', updatedList);
+    this.setState({
+      todoListFullContent: updatedList
+    })
+  }
 }
