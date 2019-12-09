@@ -9,6 +9,7 @@ interface State {
   curFilter: string, // 当前过滤条件：全部，TODO，完成
   createContent: string, // 创建新 todo 项的输入框内容
   queryContent: string, // 搜索内容
+  totalTodoCount: number,
   uncompletedCount: number, // 未完项成个数
   isSearching: boolean, // 是否在展示搜索结果中
   searchingResult: Array<ListItem>, // 搜索结果列表 copy，用于筛选过滤条件
@@ -59,6 +60,7 @@ export default class StateProvider extends Component<Props, State> {
           content: '约上大家吃晚饭，时间要今晚定下来'
         }
       ],
+      totalTodoCount: 5,
       searchingResult: [],
       filteredListContent: []
     }
@@ -155,6 +157,7 @@ export default class StateProvider extends Component<Props, State> {
       state: 0
     })
     this.setState({
+      totalTodoCount: todoListFullContent.length,
       todoListFullContent
     }, () => {
       this.updateFilterList(this.state.curFilter)

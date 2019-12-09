@@ -7,13 +7,13 @@ interface State {
   
 }
 
-export default class Footer extends Component<Props, State> {
+export default class Footer extends React.PureComponent<Props, State> {
   state = {}
 
   render() {
     return (
       <div className="footer-field">
-        Create by Leung @ 2019.
+        Create by Leung @2019.
       </div>
     )
   }

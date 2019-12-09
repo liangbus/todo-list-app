@@ -7,7 +7,8 @@ interface Props {
   uncompletedCount: number,
   mode: string,
   curFilter: string,
-  filteredListContent: []
+  totalTodoCount: number,
+  // filteredListContent: []
 }
 interface State {
   leftTodo: number
@@ -18,12 +19,21 @@ export default class OperateBar extends Component<Props, State> {
     super(props)
   }
   shouldComponentUpdate(nextProps: Props, nextStates: State) {
+    if(
+      nextProps.uncompletedCount === this.props.uncompletedCount &&
+      nextProps.mode === this.props.mode &&
+      nextProps.curFilter === this.props.curFilter &&
+      nextProps.totalTodoCount === this.props.totalTodoCount
+    ) {
+      return false
+    }
     console.log('OperateBar shouldComponentUpdate nextProps: ', nextProps)
+    console.log('in shouldComponentUpdate current props >>> ', this.props)
     return true
   }
   render() {
-    const { switchMode, todoContentFilter, mode, curFilter, uncompletedCount } = this.props
-    // console.log('switchMode >> ', switchMode);
+    const { switchMode, todoContentFilter, mode, curFilter, uncompletedCount, totalTodoCount } = this.props
+    console.log('OperateBar rendering >> ');
     return (
       <div className="operate-field">
         <div className="left-operatei-field">
@@ -33,7 +43,7 @@ export default class OperateBar extends Component<Props, State> {
           </div>
           <div className="list-info-field">
             {
-              this.props.filteredListContent.length < 1 ? 
+              this.props.totalTodoCount < 1 ? 
               <span>Write down a first TODO note~</span>
               :
               uncompletedCount > 0 ?

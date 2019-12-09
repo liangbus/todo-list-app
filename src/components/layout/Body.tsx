@@ -9,6 +9,7 @@ interface Props {
   uncompletedCount: number,
   mode: string,
   curFilter: string,
+  totalTodoCount: number,
   filteredListContent: []
 }
 interface State {

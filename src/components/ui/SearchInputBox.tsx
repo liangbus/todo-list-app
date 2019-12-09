@@ -13,6 +13,9 @@ export default class SearchInputBox extends Component<Props, State> {
     searchContent: this.props.queryContent
   }
   shouldComponentUpdate(nextProps: Props, nextStates: State) {
+    if(nextProps.queryContent.trim() === this.state.searchContent) {
+      return false
+    }
     console.log('SearchInputBox shouldComponentUpdate nextProps: ', nextProps)
     return true
   }

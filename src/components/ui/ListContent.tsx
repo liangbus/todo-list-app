@@ -17,7 +17,7 @@ export default class ListContent extends Component<Props, State> {
     super(props)
   }
   shouldComponentUpdate(nextProps: Props, nextStates: State) {
-    console.log('ListContent shouldComponentUpdate nextProps: ', nextProps)
+    console.log('OperateBar shouldComponentUpdate nextProps: ', nextProps)
     return true
   }
   checkboxChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
